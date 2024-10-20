@@ -1,13 +1,18 @@
 import random
-import time
 import copy
+import sys
 
 SHOW_ITER = True
-SHOW_TIME = False
 MIN_SIZE = 5
-MAX_SIZE = 30
+MAX_SIZE = 20
 MIN_NUM = -100
 MAX_NUM = 100
+
+if len(sys.argv) > 1:
+    MIN_SIZE = int(sys.argv[1])
+    MAX_SIZE = int(sys.argv[2])
+    MIN_NUM = int(sys.argv[3])
+    MAX_NUM = int(sys.argv[4])
 
 def bubblesort(array, n=None):
     if n == None: 
@@ -45,25 +50,17 @@ def main():
 
     print(f"Original Array: {sample}")
 
-    # Bubble Sort
-    print(f"Testing Bubble Sort")
-    test_sample = sample.copy()
-    start_time = time.time()
-    bubblesort(test_sample)
-    end_time = time.time()
-    print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
+    # # Bubble Sort
+    # print(f"Testing Bubble Sort")
+    # test_sample = sample.copy()
+    # bubblesort(test_sample)
+    # print(f"Sorted: {test_sample}")
 
     # Bubble Sort V2
     print(f"Testing Buuble Sort V2")
     test_sample = sample.copy()
-    start_time = time.time()
     bubblesortV2(test_sample)
-    end_time = time.time()
     print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
 
 if __name__ == "__main__":
     main()
