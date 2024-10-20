@@ -1,13 +1,18 @@
 import random
-import time
 import copy
+import sys
 
 SHOW_ITER = True
-SHOW_TIME = False
 MIN_SIZE = 5
 MAX_SIZE = 30
 MIN_NUM = -100
 MAX_NUM = 100
+
+if len(sys.argv) > 1:
+    MIN_SIZE = int(sys.argv[1])
+    MAX_SIZE = int(sys.argv[2])
+    MIN_NUM = int(sys.argv[3])
+    MAX_NUM = int(sys.argv[4])
 
 # inclusive end
 def quicksort(array, start=0, end=None):
@@ -49,7 +54,6 @@ def randomized_partition(array, start, end):
     array[index], array[end] = array[end], array[index]
     return partition(array, start, end)
 
-
 def main():
     sample = [random.randint(MIN_NUM, MAX_NUM) for _ in range(random.randint(MIN_SIZE, MAX_SIZE))]
 
@@ -58,22 +62,14 @@ def main():
     # Quick Sort
     print(f"Testing Quick Sort")
     test_sample = sample.copy()
-    start_time = time.time()
     quicksort(test_sample)
-    end_time = time.time()
     print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
 
     # Randomized Quick Sort
     print(f"\nTesting Randomized Quick Sort")
     test_sample = sample.copy()
-    start_time = time.time()
     randomized_quicksort(test_sample)
-    end_time = time.time()
     print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
 
 if __name__ == "__main__":
     main()
