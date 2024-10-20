@@ -1,14 +1,18 @@
 import random
-import time
 import copy
+import sys
 
 SHOW_ITER = True
-SHOW_TIME = False
-MIN_SIZE = 5
-MAX_SIZE = 30
-SIZE = 16
+MIN_SIZE = 16
+MAX_SIZE = 16
 MIN_NUM = -100
 MAX_NUM = 100
+
+if len(sys.argv) > 1:
+    MIN_SIZE = int(sys.argv[1])
+    MAX_SIZE = int(sys.argv[2])
+    MIN_NUM = int(sys.argv[3])
+    MAX_NUM = int(sys.argv[4])
 
 def mergesort(array, start=0, end=None):
     if end is None:
@@ -60,19 +64,15 @@ def merge(array, start, mid, end):
     
 
 def main():
-    sample = [random.randint(MIN_NUM, MAX_NUM) for _ in range(SIZE)]
+    sample = [random.randint(MIN_NUM, MAX_NUM) for _ in range(random.randint(MIN_SIZE, MAX_SIZE))]
 
     print(f"Original Array: {sample}")
 
     # Merge Sort
     print(f"Testing Merge Sort")
     test_sample = sample.copy()
-    start_time = time.time()
     mergesort(test_sample)
-    end_time = time.time()
     print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
 
 if __name__ == "__main__":
     main()
