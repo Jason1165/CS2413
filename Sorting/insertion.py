@@ -1,17 +1,20 @@
 import random
-import time
 import copy
+import sys
 
 SHOW_ITER = True
-SHOW_TIME = False
 MIN_SIZE = 5
-MAX_SIZE = 30
+MAX_SIZE = 20
 MIN_NUM = -100
 MAX_NUM = 100
 
-def insertionsort(array, n=None):
-    if n == None:
-        n = len(array) # if n not passed in set n to entirety
+if len(sys.argv) > 1:
+    MIN_SIZE = int(sys.argv[1])
+    MAX_SIZE = int(sys.argv[2])
+    MIN_NUM = int(sys.argv[3])
+    MAX_NUM = int(sys.argv[4])
+
+def insertionsort(array, n):
     for i in range(1, n): # from 1st element to end as nothing to compared 0th element with
 
         if (SHOW_ITER):
@@ -23,7 +26,9 @@ def insertionsort(array, n=None):
             array[j+1] = array[j] # not right position so set it equal to the prev value
             j = j - 1 # decrement
         array[j+1] = key # found the right position
-    return
+
+    if (SHOW_ITER):
+        print(array)
 
 def main():
     sample = [random.randint(-100, 100) for _ in range(random.randint(MIN_SIZE, MAX_SIZE))]
@@ -33,12 +38,8 @@ def main():
     # Insertion Sort
     print(f"Testing Insertion Sort")
     test_sample = sample.copy()
-    start_time = time.time()
-    insertionsort(test_sample)
-    end_time = time.time()
+    insertionsort(test_sample, len(test_sample))
     print(f"Sorted: {test_sample}")
-    if (SHOW_TIME):
-        print(f"Elapsed Time: {end_time - start_time}")
 
 if __name__ == "__main__":
     main()
