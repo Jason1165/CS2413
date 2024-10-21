@@ -14,9 +14,7 @@ if len(sys.argv) > 1:
     MIN_NUM = int(sys.argv[3])
     MAX_NUM = int(sys.argv[4])
 
-def bubblesort(array, n=None):
-    if n == None: 
-        n = len(array) # if n not passed in set n to entirety
+def bubblesort(array, n):
     for i in range(0, n): # from 0 to end of array
 
         if (SHOW_ITER):
@@ -28,9 +26,7 @@ def bubblesort(array, n=None):
     return
 
 
-def bubblesortV2(array, n=None):
-    if n == None:
-        n = len(array) # if n not passed in set n to entirety
+def bubblesortV2(array, n):
     i = 0
     while True: # infinite loop from i = 0 onwards
         done = True # boolean to check if swaps have been made
@@ -53,13 +49,13 @@ def main():
     # # Bubble Sort
     # print(f"Testing Bubble Sort")
     # test_sample = sample.copy()
-    # bubblesort(test_sample)
+    # bubblesort(test_sample, len(test_sample))
     # print(f"Sorted: {test_sample}")
 
     # Bubble Sort V2
     print(f"Testing Buuble Sort V2")
     test_sample = sample.copy()
-    bubblesortV2(test_sample)
+    bubblesortV2(test_sample, len(test_sample))
     print(f"Sorted: {test_sample}")
 
 if __name__ == "__main__":

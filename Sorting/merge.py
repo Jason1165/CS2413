@@ -14,9 +14,7 @@ if len(sys.argv) > 1:
     MIN_NUM = int(sys.argv[3])
     MAX_NUM = int(sys.argv[4])
 
-def mergesort(array, start=0, end=None):
-    if end is None:
-        end = len(array)
+def mergesort(array, start, end):
     if start >= end - 1:
         return
 
@@ -71,7 +69,7 @@ def main():
     # Merge Sort
     print(f"Testing Merge Sort")
     test_sample = sample.copy()
-    mergesort(test_sample)
+    mergesort(test_sample, 0, len(test_sample))
     print(f"Sorted: {test_sample}")
 
 if __name__ == "__main__":
